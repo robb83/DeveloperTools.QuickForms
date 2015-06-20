@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperTools.QuickForms", "DeveloperTools.QuickForms\DeveloperTools.QuickForms.csproj", "{94E4D77E-BE88-4662-8231-5FAD1F54A1D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperTools.QuickForms.Sample", "DeveloperTools.QuickForms.Sample\DeveloperTools.QuickForms.Sample.csproj", "{1C729878-8C75-4916-B1B8-920BF7AF500F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4BBACCDB-767E-449B-B459-29010B4A47BD}"
+	ProjectSection(SolutionItems) = preProject
+		quick_form.png = quick_form.png
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94E4D77E-BE88-4662-8231-5FAD1F54A1D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E4D77E-BE88-4662-8231-5FAD1F54A1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E4D77E-BE88-4662-8231-5FAD1F54A1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E4D77E-BE88-4662-8231-5FAD1F54A1D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C729878-8C75-4916-B1B8-920BF7AF500F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C729878-8C75-4916-B1B8-920BF7AF500F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C729878-8C75-4916-B1B8-920BF7AF500F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C729878-8C75-4916-B1B8-920BF7AF500F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
