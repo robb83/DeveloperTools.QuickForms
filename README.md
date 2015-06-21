@@ -1,4 +1,4 @@
-﻿# Simple Model Based Windows Forms Generator at Runtime
+﻿# Simple Model Based Windows Forms Dialog
 
 ## From this model
 
@@ -18,7 +18,7 @@
 
 ![Quick Form Result](quick_form.png)
 
-## And not difficult to use
+## And also easy to use
 
     var configModel = new ConfigModel();
     configModel.GenerateConstants = true;
