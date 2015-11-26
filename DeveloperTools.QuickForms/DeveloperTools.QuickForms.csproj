@@ -41,7 +41,11 @@
     <Compile Include="EditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GridForm.cs" />
+    <Compile Include="Grid\DefaultGridFormHandler.cs" />
+    <Compile Include="Grid\GridForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grid\Interfaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,5 @@
-﻿using DeveloperTools.QuickForms.Sample.Models;
+﻿using DeveloperTools.QuickForms.Grid;
+using DeveloperTools.QuickForms.Sample.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -101,89 +102,60 @@ namespace DeveloperTools.QuickForms.Sample
             GridForm<TodoModel>.ShowDialog(new AdvancedGridHandler(datasource));
         }
 
-        class AdvancedGridHandler : IGridFormHandler<TodoModel>
+        class AdvancedGridHandler : DefaultGridFormHandler<TodoModel>
         {
-            List<TodoModel> entities;
-            List<CustomGridAction> actions;
+            const String ACTION_EXPORT = "Export";
+            const String ACTION_DELETE = "Delete";
+            const String ACTION_ADD = "Add";
 
             public AdvancedGridHandler(List<TodoModel> entities)
+                :base(entities)
             {
-                this.entities = entities;
-                this.actions = new List<CustomGridAction>
+                this.customActions.AddRange(new List<CustomGridAction>
                 {
                     new CustomGridAction
                     {
-                        Name = "Export",
+                        Name = ACTION_EXPORT,
+                        Text = "Export",
                         SelectionType = CustomGridActionSelectionType.None,
-                        Text = "Export"
                     },
                     new CustomGridAction
                     {
-                        Name = "DeleteSelectedRows",
-                        SelectionType = CustomGridActionSelectionType.Multiple,
-                        Text = "Delete Selected Rows"
+                        Name = ACTION_DELETE,
+                        Text = "Delete Selected Rows",
+                        SelectionType = CustomGridActionSelectionType.Multiple
                     },
                     new CustomGridAction
                     {
-                        Name = "CreateNew",
-                        SelectionType = CustomGridActionSelectionType.None,
-                        Text = "CreateNew"
+                        Name = ACTION_ADD,
+                        Text = "Create",
+                        SelectionType = CustomGridActionSelectionType.None
                     }
-                };
+                });
             }
-
-            public void BeginEdit(TodoModel model)
+                        
+            public override void HandleCustomAction(CustomGridAction action, IGrid<TodoModel> grid)
             {
-                
-            }
-
-            public void CancelEdit(TodoModel model)
-            {
-                
-            }
-
-            public void EndEdit(TodoModel model)
-            {
-
-            }
-
-            public bool CanEdit(TodoModel model)
-            {
-                return true;
-            }
-
-            public List<CustomGridAction> GetCustomActions()
-            {
-                return this.actions;
-            }
-
-            public List<TodoModel> GetData()
-            {
-                return this.entities;
-            }
-
-            public void HandleCustomAction(CustomGridAction action, IGrid<TodoModel> grid)
-            {
-                if (action.Name == this.actions[1].Name)
+                if (action.Name == ACTION_DELETE)
                 {
                     List<TodoModel> selectedItems = grid.GetSelectedRows();
                     foreach(TodoModel model in selectedItems)
                     {
-                        this.entities.Remove(model);
+                        this.datasource.Remove(model);
                     }
 
-                    grid.SetDataSource(this.entities);
+                    grid.SetDataSource(this.datasource);
                 }
-                else if (action.Name == this.actions[2].Name)
+                else if (action.Name == ACTION_ADD)
                 {
                     var todoModel = new TodoModel();
-                    todoModel.Description = "Hello World #" + this.entities.Count;
+                    todoModel.Description = "Hello World #" + this.datasource.Count;
                     todoModel.EventDate = DateTime.Today.AddDays(7);
 
                     if (EditorForm<TodoModel>.ShowDialog(todoModel))
                     {
-                        this.entities.Add(todoModel);
-                        grid.SetDataSource(this.entities);
+                        this.datasource.Add(todoModel);
+                        grid.SetDataSource(this.datasource);
                     }
                 }
                 else
